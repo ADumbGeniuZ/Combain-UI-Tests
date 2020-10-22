@@ -25,7 +25,13 @@ module.exports = function () {
     });
 
     this.When(/^I enter my email "([^"]*)"$/, async function (email) {
-        email.sendkeys();
+        emailBox.sendkeys(email);
+        assert(email, "expected to have an email address")
+    });
+
+    this.When(/^my password "([^"]*)"$/, async function (password) {
+        let passwordBox = await $("#input-password");
+        passwordBox.sendkeys(password);
     });
 
 
