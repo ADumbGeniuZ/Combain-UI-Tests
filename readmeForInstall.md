@@ -1,8 +1,12 @@
+If not created already, create a folder in the project's root directory named "features" and create two folders in it called "step-definitions" and "reports"
+
 Selenium-Cucumber-js Setup
-npm init
-npm install 
+npm init -y
 npm install selenium-cucumber-js --save-dev
-cd node_modules/selenium-cucumber-js/package.json
+npm install 
+npm uninstall cucumber
+npm install --save-dev @cucumber/cucumber
+open node_modules/selenium-cucumber-js/package.json 
 change dependencies to   
 "dependencies": {
     "chai": "4.2.0",
@@ -23,5 +27,12 @@ change dependencies to
     "require-dir": "1.2.0",
     "selenium-webdriver": "4.0.0-alpha.7"
   },
-
+in a terminal goto node_modules/selenium-cucumber-js/
 npm update
+
+npm audit fix - you may get an error that tells you to install node modules again. do it if you get this error.
+
+then in the base directory package.json change "test" to:
+"test": "node ./node_modules/selenium-cucumber-js/index.js -s ./features/step-definitions && exit 0"
+ 
+ npm test to confirm
